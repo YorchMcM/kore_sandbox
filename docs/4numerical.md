@@ -9,7 +9,7 @@ This sections follows the mathematical procedure that transforms the equations f
 On the other hand, both the flow's velocity and induced magnetic field are divergenceless (even in the quasi-incompressible Bousinesq approximation), so they accept a so-called \textit{poloidal-toroidal} decomposition as shown below, where $\mathcal P$ and $\mathcal F$ are the poloidal potentials of $\mathbf u$ and $\mathbf b$, while $\mathcal T$ and $\mathcal G$ are thir toroidal potentials.
 
 $$
-\mathcal u = \nabla\times\nabla\times(\mathcal P\mathbf r) + \nabla\times(\mathcal T\mathbf r)\ \ \ \ \ \ \ \ \ \ \ \mathcal b = \nabla\times\nabla\times(\mathcal F\mathbf r) + \nabla\times(\mathcal G\mathbf r)
+\mathbf u = \nabla\times\nabla\times(\mathcal P\mathbf r) + \nabla\times(\mathcal T\mathbf r)\ \ \ \ \ \ \ \ \ \ \ \mathbf b = \nabla\times\nabla\times(\mathcal F\mathbf r) + \nabla\times(\mathcal G\mathbf r)
 $$
 
 
