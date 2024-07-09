@@ -8,7 +8,7 @@ the background and induced magnetic fields can be written as $B^*\mathbf B_o$ an
 After dividing the momentum equation by $\rho$, applying all appropriate non-dimensionalizations and cancelling some common terms, the non-dimensional equations read:
 
 $$ \displaylines{
-\lambda\mathbf u + 2(\Omega\tau)\hat{\mathbf z}\times\mathbf u = -\nabla p-(\Omega\tau)^2\frac{\alpha g^*\theta^*}{\Omega^2L}\theta\mathbf g + (\Omega\tau)\frac{\nu}{\Omega L^2}\nabla^2\mathbf u + \frac{(\omega\tau)^2}{\rho\mu_o}\bigg(\frac{B^*}{\Omega L}\bigg)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
+\lambda\mathbf u + 2(\Omega\tau)\hat{\mathbf z}\times\mathbf u = -\nabla p-(\Omega\tau)^2\frac{\alpha g^*\theta^*}{\Omega^2L}\theta\mathbf g + (\Omega\tau)\frac{\nu}{\Omega L^2}\nabla^2\mathbf u + \frac{(\Omega\tau)^2}{\rho\mu_o}\bigg(\frac{B^*}{\Omega L}\bigg)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
 \lambda\mathbf b = \nabla\times(\mathbf u\times\mathbf B_o) + (\Omega\tau)\frac{\eta}{\Omega L^2}\nabla^2\mathbf b \\
 \lambda\theta = -\mathbf u\cdot\nabla T_o + (\Omega\tau)\frac{\kappa}{\Omega L^2}\nabla^2\theta
 } $$

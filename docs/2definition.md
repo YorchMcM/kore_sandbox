@@ -12,7 +12,7 @@ $$
 \lambda\rho\mathbf u + 2\rho\mathbf\Omega\times\mathbf u = -\nabla p + \rho\mathbf g + \rho\nu\nabla^2\mathbf u
 $$
 
-Here, $\rho$ and $\nu > 0$ are the fluid's density and kinematic viscosity respectively, while $p$ is the reduced pressure - sum of physical pressure and centrifugal potential - and $\mathbf g$ is the acceleration of gravity.
+Here, $\rho$ and $\nu > 0$ are the fluid's density and kinematic viscosity respectively, while $p$ is the reduced pressure - sum of physical pressure and centrifugal potential - and $\mathbf g$ is the acceleration of gravity. Note that, in this equation, $\mathbf u$ is a complex vector that does **not** depend on time.
 
 In the general case, the momentum equation is imposed in a (near-)spherical shell of inner radius $r_{icb}$ and outer radius $r_{cmb}$ - the *inner core boundary* (ICB) and the *core mantle boundary* (CMB). This scenario then requires the no-penetration and no-slip boundary condition at both surfaces. Under the assumption that the inner core and mantle rotate at the same angular speed $\mathbf\Omega$, this boundary condition is trivially written as $\mathbf u_{icb} = \mathbf u_{cmb} = \mathbf 0$. At the moment, Kore cannot handle differential rotation between the inner core and mantle. Alternatively, Kore allows to set stress-free boundary conditions, so that the radial derivative of $\mathbf u$ vanishes at the boundaries. The boundary conditions at the ICB and the CMB need not be the same. TODO: La stress-free boundary condition no es compatible con un flujo mínimamente viscoso, no?
 
@@ -28,7 +28,7 @@ $$
 \lambda\mathbf b = \nabla\times(\mathbf u\times\mathbf B_o) + \eta\nabla^2\mathbf b
 $$
 
-Here, $\eta$ is the fluid's magnetic diffusivity.
+Here, $\eta$ is the fluid's magnetic diffusivity, while $\mathbf b$ is again a complex vector with a purely spatial dependance.
 
 The magnetic boundary conditions are many. TODO: Explicarlas.
 
