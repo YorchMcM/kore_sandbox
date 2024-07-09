@@ -8,8 +8,8 @@ the background and induced magnetic fields can be written as $B^*\mathbf B_o$ an
 After dividing the momentum equation by $\rho$, applying all appropriate non-dimensionalizations and cancelling some common terms, the non-dimensional equations read:
 
 $$ \displaylines{
-\lambda\mathbf u + 2(\Omega\tau)\hat{\mathbf z}\times\mathbf u = -\nabla p-(\Omega\tau)^2\frac{\theta^* g^*\alpha}{\Omega^2L}\theta\mathbf g + (\Omega\tau)\frac{\nu}{\Omega L^2}\nabla^2\mathbf u + \frac{1}{\rho\mu_o}\bigg(\frac{B^*\tau}{L}\bigg)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
-\lambda\mathbf b = \nabla\times(\mathbf u\times\mathbf B_o) + (\Omega\tau)\frac{\eta}{\OmegaL^2}\nabla^2\mathbf b \\
+\lambda\mathbf u + 2(\Omega\tau)\hat{\mathbf z}\times\mathbf u = -\nabla p-(\Omega\tau)^2\frac{\alpha g^*\theta^*}{\Omega^2L}\theta\mathbf g + (\Omega\tau)\frac{\nu}{\Omega L^2}\nabla^2\mathbf u + \frac{(\omega\tau)^2}{\rho\mu_o}\bigg(\frac{B^*}{\Omega L}\bigg)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
+\lambda\mathbf b = \nabla\times(\mathbf u\times\mathbf B_o) + (\Omega\tau)\frac{\eta}{\Omega L^2}\nabla^2\mathbf b \\
 \lambda\theta = -\mathbf u\cdot\nabla T_o + (\Omega\tau)\frac{\kappa}{\Omega L^2}\nabla^2\theta
 } $$
 
@@ -27,8 +27,8 @@ $$ \displaylines{
 Using these quantities, the equations can be rewritten as:
 
 $$ \displaylines{
-\lambda\mathbf u + 2(\Omega\tau)\hat{\mathbf z}\times\mathbf u = -\nabla p-(\omega\tau E)^2\frac{Ra}{Pr}\theta\mathbf g + (\Omega\tau E)\nabla^2\mathbf u + (\Omega\tau Le)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
-\lambda\mathbf b = \nabla\times(\mathbf u\times\mathbf B_o) + (\Omega\tau E_\eta)\nabla^2\mathbf b \\
+\lambda\mathbf u + 2(\Omega\tau)\hat{\mathbf z}\times\mathbf u = -\nabla p-(\Omega\tau E)^2\frac{Ra}{Pr}\theta\mathbf g + \Omega\tau E\nabla^2\mathbf u + (\Omega\tau Le)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
+\lambda\mathbf b = \nabla\times(\mathbf u\times\mathbf B_o) + \Omega\tau E_\eta\nabla^2\mathbf b \\
 \lambda\theta = -\mathbf u\cdot\nabla T_o + \frac{\Omega\tau E}{Pr}\nabla^2\theta
 } $$
 
@@ -41,7 +41,7 @@ $$
 The (non-dimensional) momentum equation is then written as:
 
 $$
-\lambda\mathbf u + 2(\Omega\tau)\hat{\mathbf z}\times\mathbf u = -\nabla p-(\omega\tau)^2\frac{N_o^2}{\Omega^2}\theta\mathbf g + (\Omega\tau E)\nabla^2\mathbf u + (\Omega\tau Le)^2(\nabla\times\mathbf b)\times\mathbf B_o
+\lambda\mathbf u + 2(\Omega\tau)\hat{\mathbf z}\times\mathbf u = -\nabla p-(\Omega\tau)^2\frac{N_o^2}{\Omega^2}\theta\mathbf g + (\Omega\tau E)\nabla^2\mathbf u + (\Omega\tau Le)^2(\nabla\times\mathbf b)\times\mathbf B_o
 $$
 
 If both the Rayleigh and Prandtl numbers are defined, the following holds:
@@ -55,7 +55,7 @@ Different non-dimensionalizations are now possible depending of the choice of th
 
 ## Rotation time scale
 
-This time scale has $\tau = \frac{1}{\Omega}$, so that $\Omega\tau = 1$. These non-dimensionaliz equations read:
+This time scale has $\tau = 1/\Omega$, so that $\Omega\tau = 1$. The non-dimensional equations read:
 
 $$ \displaylines{
 \lambda\mathbf u + 2\hat{\mathbf z}\times\mathbf u = -\nabla p - E^2\frac{Ra}{Pr}\theta\mathbf g + E\nabla^2\mathbf u + Le^2(\nabla\times\mathbf b)\times\mathbf B_o \\
@@ -72,10 +72,10 @@ This time scale has
 
 $$\tau = \frac{L^2}{\nu} \longrightarrow \Omega\tau = \frac{1}{E}$$
 
-These non-dimensional equations read:
+The non-dimensional equations read:
 
 $$ \displaylines{
-\lambda\mathbf u + 2\frac{1}{E}\hat{\mathbf z}\times\mathbf u = -\nabla p-\frac{Ra}{Pr}\theta\mathbf g + \nabla^2\mathbf u + \bigg(\frac{Le}{E}\bigg)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
+\lambda\mathbf u + \frac{2}{E}\hat{\mathbf z}\times\mathbf u = -\nabla p-\frac{Ra}{Pr}\theta\mathbf g + \nabla^2\mathbf u + \bigg(\frac{Le}{E}\bigg)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
 \lambda\mathbf b = \nabla\times(\mathbf u\times\mathbf B_o) + \frac{E_\eta}{E}\nabla^2\mathbf b \\
 \lambda\theta = -\mathbf u\cdot\nabla T_o + \frac{1}{Pr}\nabla^2\theta
 } $$
@@ -89,10 +89,10 @@ This time scale has
 
 $$\tau = \frac{L^2}{\eta} \longrightarrow \Omega\tau = \frac{1}{E_\eta}$$
 
-These non-dimensional equations read:
+The non-dimensional equations read:
 
 $$ \displaylines{
-\lambda\mathbf u + 2\frac{1}{E_\eta}\hat{\mathbf z}\times\mathbf u = -\nabla p - \bigg(\frac{E}{E_\eta}\bigg)^2\frac{Ra}{Pr}\theta\mathbf g + \frac{E}{E_\eta}\nabla^2\mathbf u + \bigg(\frac{Le}{E_\eta}\bigg)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
+\lambda\mathbf u + \frac{2}{E_\eta}\hat{\mathbf z}\times\mathbf u = -\nabla p - \bigg(\frac{E}{E_\eta}\bigg)^2\frac{Ra}{Pr}\theta\mathbf g + \frac{E}{E_\eta}\nabla^2\mathbf u + \bigg(\frac{Le}{E_\eta}\bigg)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
 \lambda\mathbf b = \nabla\times(\mathbf u\times\mathbf B_o) + \nabla^2\mathbf b \\
 \lambda\theta = -\mathbf u\cdot\nabla T_o + \frac{E}{E_\eta Pr}\nabla^2\theta
 } $$
@@ -103,10 +103,10 @@ This time scale has
 
 $$\tau = \frac{L\sqrt{\rho\mu_o}}{B^*} \longrightarrow \Omega\tau = \frac{1}{Le}$$
 
-These non-dimensional equations read:
+The non-dimensional equations read:
 
 $$ \displaylines{
-\lambda\mathbf u + 2\frac{1}{Le}\hat{\mathbf z}\times\mathbf u = -\nabla p-\bigg(\frac{E}{Le}\bigg)^2\frac{Ra}{Pr}\theta\mathbf g + \frac{E}{Le}\nabla^2\mathbf u + (\nabla\times\mathbf b)\times\mathbf B_o \\
+\lambda\mathbf u + \frac{2}{Le}\hat{\mathbf z}\times\mathbf u = -\nabla p-\bigg(\frac{E}{Le}\bigg)^2\frac{Ra}{Pr}\theta\mathbf g + \frac{E}{Le}\nabla^2\mathbf u + (\nabla\times\mathbf b)\times\mathbf B_o \\
 \lambda\mathbf b = \nabla\times(\mathbf u\times\mathbf B_o) + \frac{E_\eta}{Le}\nabla^2\mathbf b \\
 \lambda\theta = -\mathbf u\cdot\nabla T_o + \frac{E}{LePr}\nabla^2\theta
 } $$
