@@ -22,7 +22,7 @@ Currently, Kore can only work with constantly rotating bodies, so that one can w
 
 ## Induction equation
 
-On Earth, the liquid core is conductive iron and its motion produces a magnetic field. In the presence of an imposed background magnetic field $\mathbf B_o$, the small oscilations $\mathbf u$ will induce a similarly small and oscillatiory magnetic field perturbation $\mathbf b \sim e^{\lambda t}$, with magnitude much smaller than $\mathbf B_o$. The evlution of this magnetic perturbation is given by the electromagnetic induction equation as (see Triana et al. 2021a):
+On Earth, the liquid core is conductive iron and its motion produces a magnetic field. In the presence of an imposed background magnetic field $\mathbf B_o$, the small oscilations $\mathbf u$ will induce a similarly small and oscillatiory magnetic field perturbation $\mathbf b \sim e^{\lambda t}$, with magnitude much smaller than $\mathbf B_o$. The evolution of this magnetic perturbation is given by the electromagnetic induction equation as (see Triana et al. 2021a):
 
 $$
 \lambda\mathbf b = \nabla\times(\mathbf u\times\mathbf B_o) + \eta\nabla^2\mathbf b

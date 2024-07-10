@@ -2,10 +2,7 @@
 
 In solving the equations described in Physical Definition, Kore uses *dimensionaless* variables. A non-dimensionalization procedure is always possible thanks to the Buckingham-$\pi$ theorem. For this, the following will be used as units of length, mass, time, temperature respectively: $L$, $\tau$, $\rho L^3$, $\theta^*$. On the other hand, several vectors can be written as the product of a typical value of their magnitude times a non-dimensional vector to provide direction. Thus, one can write $\mathbf g \rightarrow g^*\mathbf g$, $\mathbf B_o \rightarrow B^*\mathbf B_o$ and $\mathbf b \rightarrow B^*\mathbf b$, where the vectors on the left hand sides are dimensional and those on the right hand side are non-dimensional, while the starred quantities are their characteristic values and provide the units. Similarly one can also write $\mathbf\Omega = \Omega\hat{\mathbf z}$ (see Physical Definition). Finally, and because it represents an angular frequency, the non-dimensionalization $\lambda \rightarrow \lambda/\tau$ follows.
 
-
-the background and induced magnetic fields can be written as $B^*\mathbf B_o$ and $B^*\mathbf b$, where $B^*$ is a typical value of the magnitude of the magnetic field while $\mathbf B_o$ and $\mathbf b$ are now non-dimensional vector quantites. Similarly, one can write $\mathbf\Omega = \Omega\hat{\mathbf z}$ (see Physical Definition).
-
-After dividing the momentum equation by $\rho$, applying all appropriate non-dimensionalizations and cancelling some common terms, the non-dimensional equations read:
+After dividing the momentum equation by $\rho$, applying all appropriate non-dimensionalizations to all equations and cancelling some common terms, the non-dimensional equations read:
 
 $$ \displaylines{
 \lambda\mathbf u + 2(\Omega\tau)\hat{\mathbf z}\times\mathbf u = -\nabla p-(\Omega\tau)^2\frac{\alpha g^*\theta^*}{\Omega^2L}\theta\mathbf g + (\Omega\tau)\frac{\nu}{\Omega L^2}\nabla^2\mathbf u + \frac{(\Omega\tau)^2}{\rho\mu_o}\bigg(\frac{B^*}{\Omega L}\bigg)^2(\nabla\times\mathbf b)\times\mathbf B_o \\
@@ -20,7 +17,6 @@ $$ \displaylines{
 \text{Lenhert number:}\ \ Le = \frac{B^*}{\Omega L\sqrt{\rho\mu_o}} \\
 \text{Rayleigh number:}\ \ Ra = \frac{\alpha g^*\theta^* L^3}{\nu\kappa} \\
 \text{Prandtl number:}\ \ Pr = \frac{\nu}{\kappa} \\
-\text{Brunt-Väisälä frequency:}\ \ N_o = -\frac{\alpha g^*\theta^*}{L} \\
 \text{Magnetic Ekmann number:}\ \ E_\eta = \frac{\eta}{\Omega L^2}
 } $$
 
@@ -32,7 +28,7 @@ $$ \displaylines{
 \lambda\theta = -\mathbf u\cdot\nabla T_o + \frac{\Omega\tau E}{Pr}\nabla^2\theta
 } $$
 
-Inviscid fluids ($\nu = 0$) don't allow for the use of the Rayleigh number, while perfectly insulating fluids ($\kappa = 0$) don't allow for the use of wither the Rayleigh or Prandtl numbers. In this cases, the following non-dimensional number is better suited:
+Inviscid fluids ($\nu = 0$) don't allow for the use of the Rayleigh number, while perfectly insulating fluids ($\kappa = 0$) don't allow for the use of either the Rayleigh or Prandtl numbers. In this cases, the following non-dimensional number is better suited:
 
 $$
 \text{Brunt-Väisälä frequency:}\ \ N_o^2 = -\frac{\alpha g^*\theta^*}{L}
