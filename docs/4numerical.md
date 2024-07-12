@@ -72,15 +72,15 @@ The algorithm is thought of as working with vectors and vector bases. Each famil
 
 In the end, each of the operators obtained in the angular discretization can be written by an appropriate combination of these $\mathcal D_\lambda$, $\mathcal S_\lambda$ and $\mathcal M_\lambda$. This is exactly what Kore does. For each of the $L-|m|+1$ equations obtained in the angular discretization, the operators apply on the vector of coefficients of each of the involved $\mathcal P_{l,m}$ and $\mathcal T_{l,m}$. Each of these scalar equations then turn into $N+1$ scalar equations which, stacked together, constitue a system of $(N+1)(L-|m|+1)$ equations to solve for the same number of unknowns. This step effectively turns each entry of the matrix obtained with the angular discretization into a sub-matrix itself, while each entry in the unknown vector from before gets turned into a sub-vector itself. The structure that was mentioned earlier for the entries of the matrix in the angular discretization is maintained by the submatrices in this second discretization.
 
-Something important to keep in mind when using Chebyshev or Gegenbauer polynomials is that their domain is limited to the $\[-1,1\]$ interval. Therefore, the radial domain of the problem needs to be mapped accordingly. Here, two situations need to be distinguished.
+Something important to keep in mind when using Chebyshev or Gegenbauer polynomials is that their domain is limited to the $[-1,1]$ interval. Therefore, the radial domain of the problem needs to be mapped accordingly. Here, two situations need to be distinguished.
 
-- In the presence of an inner core, the radial domain is $\[r_{icb},r_{cmb}\]$. This interval of $r$ is scaled and shifted to match the $\[-1,1\]$ interval of $x$ as:
+- In the presence of an inner core, the radial domain is $[r_{icb},r_{cmb}]$. This interval of $r$ is scaled and shifted to match the $[-1,1]$ interval of $x$ as:
 
 $$
 x = 2\frac{r - r_{icb}}{r_{cmb} - r_{icb}} - 1
 $$
 
-- In the absence of an inner core, mapping the interval $\[0,r_{cmb}\]$ to the interval $\[-1,1\]$ creates conflicts at the origin (see [Rekier et al., 2019](https://academic.oup.com/gji/article/216/2/777/5159470)) and it is more convenient to map the whole diameter $[-r_{cmb}, r_{cmb}]$ to the Chebyshev domain. This is done through the transformation:
+- In the absence of an inner core, mapping the interval $[0,r_{cmb}]$ to the interval $[-1,1]$ creates conflicts at the origin (see [Rekier et al., 2019](https://academic.oup.com/gji/article/216/2/777/5159470)) and it is more convenient to map the whole diameter $[-r_{cmb}, r_{cmb}]$ to the Chebyshev domain. This is done through the transformation:
 
 $$
 x = \frac{r}{r_{cmb}}

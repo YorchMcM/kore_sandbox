@@ -44,10 +44,14 @@ TODO: No estoy muy seguro de qué significa cada una de estas opciones. Solo he 
 With these options, the command to run the `solve.py` can be run, which is also done in paraller with MPI:
 
 ```console
-mpiexec -n [NUMBER OF CORES] ./bin/solve.py $opts
+mpiexec -n [NUMBER OF CORES] [PATH]/solve.py $opts
 
 ```
 
 If all goes well, the solution is written into txt files. If solved as an eigenvalue problem, the eigenvalues are written to an `eigenvalues0.dat` file. The eigenvectors are written to files with the `.field` extension. In a solved problem, these files do not contain the eigenvectors but rather the response vectors. These vectors are just segments of the massive vector containing all Chebyshev coefficients of all spherical harmonic coefficients of all scalar variables. The part pertaining to the hydrodynamic equations contains both the $\mathcal P$ and $\mathcal T$ potentials, while the part pertaining to the induced magnetic field contains both the $\mathcal F$ and $\mathcal G$ potentials. TODO: Eso último me lo he inventado jajajaja
 
 ### Post processing the solution
+
+In an eigenvalue problem, the quality of the converged solution obtained with SLEPc can be checked by running the `spin_doctor.py` file, which provides TODO: Ni idea de qué provides.
+
+On the other hand, the eigenvectors - or forced solution - can be visualized by running the `plot_field.py` file.
