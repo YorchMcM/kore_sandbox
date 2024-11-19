@@ -30,7 +30,7 @@ $$
 
 Here, $\eta$ is the fluid's magnetic diffusivity, while $\mathbf b$ is again a complex vector with a purely spatial dependance.
 
-The magnetic boundary conditions are many. TODO: Explicarlas.
+The magnetic boundary conditions are many. TODO: I'm not sure how many there are, and I don't really understand them all...
 
 In the presence of magnetic fields, the conductive iron will be subject to an electromagnetic force $\mathbf F_{em}$ (the Lorentz force), which should be added to the right hand side of the momentum equation. This force is written as:
 
@@ -62,4 +62,4 @@ Here, $\rho' = -\rho\alpha\theta$ is the density perturbation caused by the resp
 
 ## Compositional equation
 
-TODO
+TODO: Coming soon...

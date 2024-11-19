@@ -28,12 +28,7 @@ import utils as ut
 import operators as op
 import radial_profiles as rap
 
-
-
-
-
-
-
+# sys.path.extend(['/home/jorgemc/kore_sandbox/'])
 
 def main():
 

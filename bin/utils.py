@@ -7,6 +7,7 @@ import scipy.fftpack as sft
 import numpy.polynomial.chebyshev as ch
 import numpy as np
 import parameters as par
+import gegenbauer_utilities as gegut
 
 '''
 A library of various function definitions and utilities
@@ -851,8 +852,7 @@ def B0_norm():
     return out
 
 
-
-def Dlam(lamb,N):
+def DlamAND(lamb,N):
     '''
     Order lamb (>=1) derivative matrix, size N*N
     '''
@@ -866,8 +866,18 @@ def Dlam(lamb,N):
     return const1*const2*ss.diags(tmp,lamb, format='csr')
 
 
+def Dlam(lamb,N):
 
-def Slam(lamb,N):
+    to_return = gegut.derivative_operator(lamb,N-1)
+    if par.ricb == 0:
+        to_return = to_return * (1/rcmb)**lamb  # ok when rcmb is not 1
+    else:
+        to_return = to_return * (2./(rcmb-par.ricb))**lamb
+
+    return to_return
+
+
+def SlamAND(lamb,N):
     '''
     Converts C^(lamb) series coefficients to C^(lamb+1) series
     '''
@@ -881,6 +891,10 @@ def Slam(lamb,N):
         diag1 = -lamb/(lamb+tmp[2:])
 
     return ss.diags([diag0,diag1],[0,2], format='csr')
+
+
+def Slam(lamb,N):
+    return gegut.rotation_operator(lamb,N-1)
 
 
 
@@ -921,7 +935,7 @@ def csl(svec,lamb,j,k):
 
 
 
-def Mlam(a0,lamb,vector_parity):
+def MlamAND(a0,lamb,vector_parity):
     '''
     Multiplication matrix. a0 are the cofficients in the C^(lamb) basis and lamb
     is the order of the C^(lamb) basis. (This basis should match the
@@ -1022,6 +1036,10 @@ def Mlam(a0,lamb,vector_parity):
         out = 0
 
     return out
+
+
+def Mlam(a0,lamb,vector_parity):
+    return gegut.multiplication_operator(lamb, a0, vector_parity)
 
 
 

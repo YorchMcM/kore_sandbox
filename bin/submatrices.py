@@ -23,6 +23,7 @@ import utils as ut
 import radial_profiles as rap
 import autocompute as ac
 
+andres = False
 
 def main(ncpus):
 
@@ -113,34 +114,69 @@ def main(ncpus):
         cd_eta = ut.chebify( rap.magnetic_diffusivity, 1, tol)
         cd_eho = ut.chebify( rap.eta_rho, 1, tol)
 
-    # Gegenbauer basis transformations
-    S0 = ut.Slam(0, par.N) # From the Chebyshev basis ( C^(0) basis ) to C^(1) basis
-    S1 = ut.Slam(1, par.N) # From C^(1) basis to C^(2) basis
-    S2 = ut.Slam(2, par.N) # From C^(2) basis to C^(3) basis
-    S3 = ut.Slam(3, par.N) # From C^(3) basis to C^(4) basis
+    if andres:
 
-    # Matrices to compute derivatives
-    # The result will be in a higher Gegenbauer order basis according to
-    # the order of the derivative, e.g. D3 will change the basis from C^(0) to C^(3)
-    D1 = ut.Dlam(1, par.N)
-    D2 = ut.Dlam(2, par.N)
-    D3 = ut.Dlam(3, par.N)
-    D4 = ut.Dlam(4, par.N)
-    D  = [ 1, D1, D2, D3, D4 ]
+        # LAS DE ANDRÉS
+        # Gegenbauer basis transformations
+        S0 = ut.SlamAND(0, par.N)  # From the Chebyshev basis ( C^(0) basis ) to C^(1) basis
+        S1 = ut.SlamAND(1, par.N)  # From C^(1) basis to C^(2) basis
+        S2 = ut.SlamAND(2, par.N)  # From C^(2) basis to C^(3) basis
+        S3 = ut.SlamAND(3, par.N)  # From C^(3) basis to C^(4) basis
 
-    # Auxiliary basis transformations
-    S10   = S1*S0
-    S21   = S2*S1
-    S210  = S2*S10
-    S32   = S3*S2
-    S321  = S32*S1
-    S3210 = S321*S0
-    S     = [ 1, S0, S10, S210, S3210 ]
-    G4    = [ 1, S3, S32, S321, S3210 ]
-    G3    = [ 1, S2, S21, S210 ]
-    G2    = [ 1, S1, S10 ]
-    G1    = [ 1, S0 ]
-    G     = [ G1, G2, G3, G4 ]  # fixed this for the inviscid case
+        # Matrices to compute derivatives
+        # The result will be in a higher Gegenbauer order basis according to
+        # the order of the derivative, e.g. D3 will change the basis from C^(0) to C^(3)
+        D1 = ut.DlamAND(1, par.N)
+        D2 = ut.DlamAND(2, par.N)
+        D3 = ut.DlamAND(3, par.N)
+        D4 = ut.DlamAND(4, par.N)
+        D = [1, D1, D2, D3, D4]
+
+        # Auxiliary basis transformations
+        S10 = S1 * S0
+        S21 = S2 * S1
+        S210 = S2 * S10
+        S32 = S3 * S2
+        S321 = S32 * S1
+        S3210 = S321 * S0
+        S = [1, S0, S10, S210, S3210]
+        G4 = [1, S3, S32, S321, S3210]
+        G3 = [1, S2, S21, S210]
+        G2 = [1, S1, S10]
+        G1 = [1, S0]
+        G = [G1, G2, G3, G4]  # fixed this for the inviscid case
+
+    else:
+
+        # LAS MIAS
+        # Gegenbauer basis transformations
+        S0 = ut.Slam(0, par.N) # From the Chebyshev basis ( C^(0) basis ) to C^(1) basis
+        S1 = ut.Slam(1, par.N) # From C^(1) basis to C^(2) basis
+        S2 = ut.Slam(2, par.N) # From C^(2) basis to C^(3) basis
+        S3 = ut.Slam(3, par.N) # From C^(3) basis to C^(4) basis
+
+        # Matrices to compute derivatives
+        # The result will be in a higher Gegenbauer order basis according to
+        # the order of the derivative, e.g. D3 will change the basis from C^(0) to C^(3)
+        D1 = ut.Dlam(1, par.N)
+        D2 = ut.Dlam(2, par.N)
+        D3 = ut.Dlam(3, par.N)
+        D4 = ut.Dlam(4, par.N)
+        D  = [ 1, D1, D2, D3, D4 ]
+
+        # Auxiliary basis transformations
+        S10   = S1*S0
+        S21   = S2*S1
+        S210  = S2*S10
+        S32   = S3*S2
+        S321  = S32*S1
+        S3210 = S321*S0
+        S     = [ 1, S0, S10, S210, S3210 ]
+        G4    = [ 1, S3, S32, S321, S3210 ]
+        G3    = [ 1, S2, S21, S210 ]
+        G2    = [ 1, S1, S10 ]
+        G1    = [ 1, S0 ]
+        G     = [ G1, G2, G3, G4 ]  # fixed this for the inviscid case
 
     # Sets the Gegenbauer basis order for each section
     if ((par.magnetic == 1) and ('conductor' in par.innercore)) :
@@ -464,16 +500,27 @@ def main(ncpus):
     # -------------------------------------------------------------------------------------------------------------------------------------------
     # Generate the Mlam matrices in parallel ----------------------------------------------------------------------------------------------------
     # -------------------------------------------------------------------------------------------------------------------------------------------
-    pool = mp.Pool( processes = int(ncpus) )
-    tmp = [ pool.apply_async( ut.Mlam, args = ( parg0[k], parg1[k], parg2[k]) ) for k in range(np.size(parg0,0)) ]
-    # recover resulting list of matrices
-    matlist = [tmp1.get() for tmp1 in tmp]
-    pool.close()
-    pool.join()
+    if andres:
+        pool = mp.Pool( processes = int(ncpus) )
+        tmp = [ pool.apply_async( ut.MlamAND, args = ( parg0[k], parg1[k], parg2[k]) ) for k in range(np.size(parg0,0)) ]
+        # recover resulting list of matrices
+        matlist = [tmp1.get() for tmp1 in tmp]
+        pool.close()
+        pool.join()
+    else:
+        pool = mp.Pool( processes = int(ncpus) )
+        tmp = [ pool.apply_async( ut.Mlam, args = ( parg0[k], parg1[k], parg2[k]) ) for k in range(np.size(parg0,0)) ]
+        # recover resulting list of matrices
+        matlist = [tmp1.get() for tmp1 in tmp]
+        pool.close()
+        pool.join()
     # -------------------------------------------------------------------------------------------------------------------------------------------
     # -------------------------------------------------------------------------------------------------------------------------------------------
     # -------------------------------------------------------------------------------------------------------------------------------------------
 
+    # Hasta aquí, t0d0 lo mío y lo de Andrés es exactamente igual. A lo sumo, los errores en Mlam que están en el
+    # orden de 1e-15 y 1e-14 (average over all entries). I don't think this is the cause, because the problem has to
+    # do with the size of the matrices at the end.
 
     # Now we need to multiply the matrices on the right by the appropriate derivative matrix,
     # and change basis accordingly:
@@ -526,7 +573,7 @@ def main(ncpus):
         if chop > 0:
             matrix = ss.vstack( [ Z[chop-1], matrix[:-chop,:] ], format='csr' )
 
-        sio.mmwrite( labl1, matrix )
+        sio.mmwrite( labl1 + '.mtx', matrix )
 
     # -------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -17,7 +17,7 @@ import parameters as par
 import utils as ut
 import utils4pp as upp
 
-
+#sys.path.extend(['/home/jorgemc/kore_sandbox/'])
 
 def main(ncpus):
 

@@ -11,7 +11,9 @@ sys.path.insert(1,'bin/')
 
 import utils as ut
 import parameters as par
-import utils_pp as upp
+import utils4pp as upp
+
+plt.rcParams.update(plt.rcParamsDefault)
 
 '''
 Script to plot meridional cuts of a solution field
