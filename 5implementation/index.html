@@ -1,0 +1,766 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../4numerical/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>Software implementation - User Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#software-implementation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="User Manual" class="md-header__button md-logo" aria-label="User Manual" data-md-component="logo">
+      
+  <img src="../assets/test1.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            User Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Software implementation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1installation/" class="md-tabs__link">
+        
+  
+    
+  
+  Installation Notes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2definition/" class="md-tabs__link">
+        
+  
+    
+  
+  Physical definition
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3nondim/" class="md-tabs__link">
+        
+  
+    
+  
+  Non-dimensionalization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4numerical/" class="md-tabs__link">
+        
+  
+    
+  
+  Numerical scheme
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Software implementation
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="User Manual" class="md-nav__button md-logo" aria-label="User Manual" data-md-component="logo">
+      
+  <img src="../assets/test1.png" alt="logo">
+
+    </a>
+    User Manual
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2definition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Physical definition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3nondim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Non-dimensionalization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4numerical/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Numerical scheme
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Software implementation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Software implementation
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the software
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      General workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining the problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-the-submatrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the submatrices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assembling-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assembling the system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solving-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solving the system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-processing-the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post processing the solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the software
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      General workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining the problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-the-submatrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the submatrices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assembling-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assembling the system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solving-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solving the system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-processing-the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post processing the solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="software-implementation">Software implementation</h1>
+<p>Although the <a href="https://yorchmcm.github.io/kore_sandbox/2definition/">physical problem</a> and <a href="https://yorchmcm.github.io/kore_sandbox/4numerical/">numerical method</a> have been explained, using the code can - and will - be disorienting. Thus, an overall explanation of how the code is structured is presented below. This will cover most - <strong>but not all</strong> - of the files within the <a href="https://github.com/repepo/kore/tree/main/bin"><code>bin</code> folder</a>. The content below will be high level, aimed at relating the different parts of the code to what has been explained in the rest of this documentation. Low level details pertaining to e.g. the specific way in which matrices are built will not be given. </p>
+<h2 id="running-the-software">Running the software</h2>
+<p>It is to be noted that some pre-operatorions are required to run Kore, namely exporting all required paths and activating the environment (see <a href="https://yorchmcm.github.io/kore_sandbox/1installation/">Installation</a> and the README file in the <a href="https://github.com/repepo/kore">Kore Github repo</a>). All this will be assumed to have been done. Another important aspect of Kore is that it is parallelized. Parallelization-related commands and code will therefore be intertwined with Kore's code per se. Parallelization details will not be discussed here, though.</p>
+<h2 id="general-workflow">General workflow</h2>
+<h3 id="defining-the-problem">Defining the problem</h3>
+<p>The first step to solve a problem with Kore is, well, to define a problem. This is done in the <code>parameters.py</code> file. It is here where the equations that need to be solved are selected, among those explained in <a href="https://yorchmcm.github.io/kore_sandbox/2definition/">Physical definition</a>. This file is generally divided in big sections pertaining to each of the equations, where the relevant non-dimensional quantities are also defined. For instance, the section devoted to the momentum equation contains the value of the Ekmann number, while the section devoted to induction contains the value of the Lenhert and magnetic Ekmann numbers. After all sections, the value of <span class="arithmatex">\(\Omega\tau\)</span> is selected (see <a href="https://yorchmcm.github.io/kore_sandbox/3nondim/">Non-dimensionalization</a>), which sets the non-dimensionalization and the final form of the equations.</p>
+<p>Another thing that is done in this file, under a section called <code>Resolution</code>, is fixing the truncation order for the Chebyshev expansions and the truncation degree for the spherical harmonic expansions. The former can be done either manually or according to the Ekmann number, while the latter is determined according to the number of CPUs used in the parallelization. In this regard, it was mentioned in <a href="https://yorchmcm.github.io/kore_sandbox/4numerical/">Numerical scheme</a> that Kore solves the problem in a <em>per-order</em> basis, and only for a given symmetry of the solution. These two elements are also set in this file, under the <code>hydrodynamic parameters</code> section.</p>
+<p>The last section in this file is devoted to SLEPc, the algorithm to solve for the eigenvalues of the problem. Here, the ''fixed point'' mentioned in <a href="https://yorchmcm.github.io/kore_sandbox/4numerical/">Numerical scheme</a> is set, as well as the maximum number of iterations or the required tolerance in the obtained eigenvalues.</p>
+<h3 id="building-the-submatrices">Building the submatrices</h3>
+<p>The next step is just building the system of equations. It was explained in <a href="https://yorchmcm.github.io/kore_sandbox/4numerical/">Numerical scheme</a> that the equations in this system - which results from the angular discretization - will be determined by the order <span class="arithmatex">\(m\)</span> and symmetry of the solution and that, when written in matrix form, each entry of the matrix will be a differential operator. In the radial discretization, however, each of these operators is turned into a sub-matrix itself, all coming from the Chebyshev discretization scheme (see <a href="https://yorchmcm.github.io/kore_sandbox/4numerical/">Numerical scheme</a> or <a href="https://epubs.siam.org/doi/abs/10.1137/120865458">Olver and Townsend, 2013</a>). Thus, in order to build the whole system, these submatrices are built first. This is done by running the <code>submatrices.py</code> file. Running this file requires one argument: the number of cores. Once the submatrices are built they are written to txt-like files with the <code>.mtx</code> extension. These files are stored one directory above the <code>submatrices.py</code> file itself.</p>
+<h3 id="assembling-the-system">Assembling the system</h3>
+<p>The next step is assembling these submatrices into the bigger system, namely into matrices <span class="arithmatex">\(\mathbf A\)</span> and <span class="arithmatex">\(\mathbf B\)</span> of the generalized eigenvalue problem. This is done in the <code>assemble.py</code>, which should be run next. This task is parallelized with <a href="https://mpitutorial.com/">MPI</a>, and the command that should be run from the command line is</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">mpiexec -n [NUMBER OF CORES] [PATH]/assemble.py</span>
+</span></code></pre></div>
+<p>If all goes well, the matrices should be written in the <code>A.mtx</code> and <code>B.mtx</code> files together with all other submatrices.</p>
+<h3 id="solving-the-system">Solving the system</h3>
+<p>Once these two matrices are built, all that is left is to solve the system. Some options for the SLEPc solver are required first, so they should be specified with the command</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">export opts=&#39;-st_type sinvert -eps_error_relative ::ascii_info_detail -eps_balance twoside -pc_factor_mat_solver_type mumps -mat_mumps_icntl_14 10000&#39;</span>
+</span></code></pre></div>
+<p>TODO: No estoy muy seguro de qué significa cada una de estas opciones. Solo he corrido este commando una vez bajo ordern directa y expresa de Andrés. Yo en realidad solo soy un mandao.</p>
+<p>With these options, the command to run the <code>solve.py</code> can be run, which is also done in paraller with MPI:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">mpiexec -n [NUMBER OF CORES] [PATH]/solve.py $opts</span>
+</span></code></pre></div>
+<p>If all goes well, the solution is written into txt files. If solved as an eigenvalue problem, the eigenvalues are written to an <code>eigenvalues0.dat</code> file. The eigenvectors are written to files with the <code>.field</code> extension. In a solved problem, these files do not contain the eigenvectors but rather the response vectors. These vectors are just segments of the massive vector containing all Chebyshev coefficients of all spherical harmonic coefficients of all scalar variables. The part pertaining to the hydrodynamic equations contains both the <span class="arithmatex">\(\mathcal P\)</span> and <span class="arithmatex">\(\mathcal T\)</span> potentials, while the part pertaining to the induced magnetic field contains both the <span class="arithmatex">\(\mathcal F\)</span> and <span class="arithmatex">\(\mathcal G\)</span> potentials. TODO: Eso último me lo he inventado jajajaja</p>
+<h3 id="post-processing-the-solution">Post processing the solution</h3>
+<p>In an eigenvalue problem, the quality of the converged solution obtained with SLEPc can be checked by running the <code>spin_doctor.py</code> file, which provides TODO: Ni idea de qué provides.</p>
+<p>On the other hand, the eigenvectors - or forced solution - can be visualized by running the <code>plot_field.py</code> file.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
